@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Styles/Layout.css';
-import Chip from '@material-ui/core/Chip';
+import Chip from 'material-ui/Chip';
 
 class Sidebar extends Component {
 
@@ -55,9 +55,11 @@ class Sidebar extends Component {
           {this.state.ingredients.map((ingredient, index) => {
             return <div key={index} className="ingredientListItem">
               <Chip
-                label={ingredient}
-                onDelete={() => this.handleRemoveIngredient(ingredient)}
-              />
+                onRequestDelete={() => this.handleRemoveIngredient(ingredient)}
+                style={{margin: "5px auto"}}
+              >
+                {ingredient}
+              </Chip>
             </div>
           })}
         </div>

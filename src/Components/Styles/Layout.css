@@ -40,7 +40,9 @@
 
 .sidebarIngredientList {
   margin-top: 10px;
+  text-align: center;
 }
+
 .ingredientListItem {
   margin-bottom: 10px;
 }

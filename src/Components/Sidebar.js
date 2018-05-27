@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Styles/Layout.css';
 import Chip from 'material-ui/Chip';
+import AutoComplete from 'material-ui/AutoComplete';
 
 class Sidebar extends Component {
 
@@ -9,7 +10,8 @@ class Sidebar extends Component {
 
     this.state = {
       ingredients: ["chicken", "tortilla wrap"], //array of ingredients
-      ingredientToAdd: "" //ingredient to be added to the list
+      ingredientToAdd: "", //ingredient to be added to the list
+      allIngredients: ["Chicken", "Egg", "Noodles", "Ginger"]
     }
   }
 
@@ -39,15 +41,41 @@ class Sidebar extends Component {
     })
   }
 
+  handleUpdateInput = (value) => {
+    this.setState({
+    dataSource: [
+      value,
+      value + value,
+      value + value + value,
+    ]
+  })}
+
   render() {
     return (
       <div className="sidebarContainer">
         <div className="sidebarTitle">Ingredients</div>
         <div className="sidebarInputSection">
+
+
           <form onSubmit={this.handleAddIngredient}>
-            <input className="sidebarIngredientInput" value={this.state.ingredientToAdd} onChange={this.handleIngredientToAddChange}></input>
+          <input
+            className="sidebarIngredientInput"
+            value={this.state.ingredientToAdd}
+            onChange={this.handleIngredientToAddChange}>
+          </input>
+
+
+
           <button type="submit">Add</button>
           </form>
+
+          <AutoComplete
+            hintText="Type anything"
+            dataSource={this.state.allIngredients}
+            onUpdateInput={this.handleUpdateInput}
+          />
+
+
         </div>
 
         {this.state.ingredients.length > 0 ?

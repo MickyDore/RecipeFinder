@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Styles/Layout.css';
 import Chip from 'material-ui/Chip';
+import AutoComplete from 'material-ui/AutoComplete';
 
 class Sidebar extends Component {
 
@@ -8,16 +9,19 @@ class Sidebar extends Component {
     super();
 
     this.state = {
-      ingredients: ["chicken", "tortilla wrap"], //array of ingredients
-      ingredientToAdd: "" //ingredient to be added to the list
+      ingredients: ["apple", "flour"], //array of ingredients
+      ingredientToAdd: "", //ingredient to be added to the list
+      allIngredients: ["Pork", "Egg", "Edamame", "Eagle", "Noodles", "Ginger"],
     }
   }
 
-  //Update the state of the ingredient to be added
-  handleIngredientToAddChange = (e) => {
-    this.setState({
-      ingredientToAdd: e.target.value //user input
+
+  //this handles the autocomplete function - returns values in the datasource
+    handleUpdateIngredient = (value) => {
+      this.setState({
+      ingredientToAdd: value
     })
+
   }
 
   //Add the ingredient to the list when the form is submitted
@@ -39,16 +43,26 @@ class Sidebar extends Component {
     })
   }
 
+
   render() {
     return (
       <div className="sidebarContainer">
-        <div className="sidebarTitle">Ingredients</div>
         <div className="sidebarInputSection">
+
           <form onSubmit={this.handleAddIngredient}>
-            <input className="sidebarIngredientInput" value={this.state.ingredientToAdd} onChange={this.handleIngredientToAddChange}></input>
-          <button type="submit">Add</button>
+
+          <AutoComplete
+            hintText="Add an ingredient!"
+            filter={AutoComplete.fuzzyFilter}
+            dataSource={this.state.allIngredients}
+            onUpdateInput={this.handleUpdateIngredient}
+            searchText={this.state.ingredientToAdd}
+          />
+
+        <button className="addIngredientButton" type="submit">Add</button>
           </form>
-        </div>
+
+        <div className="sidebarTitle">Ingredients</div>
 
         {this.state.ingredients.length > 0 ?
         <div className="sidebarIngredientList">
@@ -56,7 +70,7 @@ class Sidebar extends Component {
             return <div key={index} className="ingredientListItem">
               <Chip
                 onRequestDelete={() => this.handleRemoveIngredient(ingredient)}
-                style={{margin: "5px auto"}}
+                style={{margin: "5px auto", backgroundColor: "#0FA3B1"}}
               >
                 {ingredient}
               </Chip>
@@ -64,7 +78,13 @@ class Sidebar extends Component {
           })}
         </div>
 
-        : ""}
+        : "Add some ingredients!"}
+      </div>
+
+
+        <div className="findRecipesSection">
+          <button className="addIngredientButton" onClick={() => this.props.findRecipes(this.state.ingredients)}>Find Recipes!</button>
+        </div>
       </div>
     );
   }

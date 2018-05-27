@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
 .overallContainer {
   width: 100%;
 }
@@ -5,9 +9,10 @@
 .navbarContainer {
   height: 60px;
   box-sizing: border-box;
-  background-color: #19B5FE;
+  background-color: #0FA3B1;
   box-shadow: 0px 0px 7px 1px #1a1a1a;
-  z-index: 10000000000000000000000000000000000000000000000000;
+  z-index: 3;
+  position: relative;
 }
 
 .infoContainer {
@@ -16,20 +21,21 @@
   box-sizing: border-box;
   display: flex;
   z-index: 1;
-
 }
 
 .sidebarContainer {
-  width: 350px;
+  width: 400px;
   box-sizing: border-box;
-  background-color: #F5D76E;
-  z-index: 1;
-  padding-top: 10px;
+  background-color: #E6E8E6;
+  z-index: 2;
+  box-shadow: -2px 0px 10px 1px #1a1a1a;
 }
 
 .contentContainer {
   width: 100%;
   box-sizing: border-box;
+  background-color: #F9F7F3;
+  z-index: 1;
 }
 
 
@@ -39,10 +45,72 @@
 }
 
 .sidebarIngredientList {
-  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  border-radius: 10px;
+  background-color: #BCD4DE;
+  width: 80%;
+  margin: 10px auto;
+  box-sizing: border-box;
+  padding: 10px 0px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
-.ingredientListItem {
-  margin-bottom: 10px;
+.sidebarInputSection {
+  padding-top: 20px;
+  box-sizing: border-box;
+  height: calc(100vh - 120px);
+}
+
+.addIngredientButton {
+  border: none;
+  padding: 10px 70px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #0FA3B1;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+.contentTitle {
+  margin: 15px;
+  font-weight: bold;
+}
+
+.contentRecipeContainer {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #0FA3B1;
+  height: calc(100vh - 150px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.recipeSection {
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #BCD4DE;
+  margin: 10px auto;
+}
+
+.recipeSectionImage {
+  width: 100%;
+  height: 300px;
+}
+
+.recipeSectionImage img {
+  width: 100%;
+  height: 100%;
+}
+
+.recipeSectionInfo {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
 }

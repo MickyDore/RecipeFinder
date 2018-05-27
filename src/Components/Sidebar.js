@@ -11,15 +11,24 @@ class Sidebar extends Component {
     this.state = {
       ingredients: ["chicken", "tortilla wrap"], //array of ingredients
       ingredientToAdd: "", //ingredient to be added to the list
-      allIngredients: ["Chicken", "Egg", "Noodles", "Ginger"]
+      allIngredients: ["Pork", "Egg", "Edamame", "Eagle", "Noodles", "Ginger"] //to store the autocomplete ingredients
     }
   }
 
   //Update the state of the ingredient to be added
-  handleIngredientToAddChange = (e) => {
-    this.setState({
-      ingredientToAdd: e.target.value //user input
+  //not sure we need this function anymore with the new autocomplete, but can rename the function below!
+  // handleIngredientToAddChange = (e) => {
+  //   this.setState({
+  //     ingredientToAdd: e.target.value //user input
+  //   })
+  // }
+
+  //this handles the autocomplete function - returns values in the datasource
+    handleUpdateIngredient = (value) => {
+      this.setState({
+      ingredientToAdd: value
     })
+
   }
 
   //Add the ingredient to the list when the form is submitted
@@ -32,6 +41,8 @@ class Sidebar extends Component {
         ingredientToAdd: ""
       })
     }
+    this.refs[`ingredientInput`].setState({searchText:''});
+    this.refs[`ingredientInput`].focus();
   }
 
   //Remove the ingredient from the list
@@ -41,14 +52,6 @@ class Sidebar extends Component {
     })
   }
 
-  handleUpdateInput = (value) => {
-    this.setState({
-    dataSource: [
-      value,
-      value + value,
-      value + value + value,
-    ]
-  })}
 
   render() {
     return (
@@ -57,23 +60,31 @@ class Sidebar extends Component {
         <div className="sidebarInputSection">
 
 
+          {/*
+            <input
+              className="sidebarIngredientInput"
+              value={this.state.ingredientToAdd}
+              onChange={this.handleIngredientToAddChange}>
+            </input>
+
+            */}
+
           <form onSubmit={this.handleAddIngredient}>
-          <input
-            className="sidebarIngredientInput"
+
+
+          {/*I've just popped the autocomplete function here for now*/}
+          <AutoComplete
+            hintText="Type anything"
+            ref='ingredientInput'
+            dataSource={this.state.allIngredients}
+            onUpdateInput={this.handleUpdateIngredient}
             value={this.state.ingredientToAdd}
-            onChange={this.handleIngredientToAddChange}>
-          </input>
-
-
+          />
 
           <button type="submit">Add</button>
           </form>
 
-          <AutoComplete
-            hintText="Type anything"
-            dataSource={this.state.allIngredients}
-            onUpdateInput={this.handleUpdateInput}
-          />
+
 
 
         </div>

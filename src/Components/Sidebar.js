@@ -41,8 +41,6 @@ class Sidebar extends Component {
         ingredientToAdd: ""
       })
     }
-    this.refs[`ingredientInput`].setState({searchText:''});
-    this.refs[`ingredientInput`].focus();
   }
 
   //Remove the ingredient from the list
@@ -56,38 +54,23 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="sidebarContainer">
-        <div className="sidebarTitle">Ingredients</div>
         <div className="sidebarInputSection">
-
-
-          {/*
-            <input
-              className="sidebarIngredientInput"
-              value={this.state.ingredientToAdd}
-              onChange={this.handleIngredientToAddChange}>
-            </input>
-
-            */}
 
           <form onSubmit={this.handleAddIngredient}>
 
-
-          {/*I've just popped the autocomplete function here for now*/}
           <AutoComplete
-            hintText="Type anything"
-            ref='ingredientInput'
+            hintText="Add an ingredient!"
+            filter={AutoComplete.fuzzyFilter}
             dataSource={this.state.allIngredients}
             onUpdateInput={this.handleUpdateIngredient}
-            value={this.state.ingredientToAdd}
+            searchText={this.state.ingredientToAdd}
           />
 
-          <button type="submit">Add</button>
+        <button className="addIngredientButton" type="submit">Add</button>
           </form>
 
-
-
-
         </div>
+        <div className="sidebarTitle">Ingredients</div>
 
         {this.state.ingredients.length > 0 ?
         <div className="sidebarIngredientList">
@@ -95,7 +78,7 @@ class Sidebar extends Component {
             return <div key={index} className="ingredientListItem">
               <Chip
                 onRequestDelete={() => this.handleRemoveIngredient(ingredient)}
-                style={{margin: "5px auto"}}
+                style={{margin: "5px auto", backgroundColor: "#0FA3B1"}}
               >
                 {ingredient}
               </Chip>

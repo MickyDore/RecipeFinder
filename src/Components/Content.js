@@ -6,7 +6,6 @@ class Content extends Component {
   render() {
     return (
       <div className="contentContainer">
-        <p>This is the content component.</p>
       </div>
     );
   }

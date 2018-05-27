@@ -18,13 +18,6 @@ class Content extends Component {
               </div>
             </div>
           }) : ""}
-          {/* <div className="recipeSection">
-            <div className="recipeSectionImage"></div>
-            <div className="recipeSectionInfo">
-              <div className="recipeSectionTitle"></div>
-              <div className="recipeSectionPublisher"></div>
-            </div>
-          </div> */}
         </div>
 
       </div>

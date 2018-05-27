@@ -16,13 +16,6 @@ class Sidebar extends Component {
   }
 
   //Update the state of the ingredient to be added
-  //not sure we need this function anymore with the new autocomplete, but can rename the function below!
-  // handleIngredientToAddChange = (e) => {
-  //   this.setState({
-  //     ingredientToAdd: e.target.value //user input
-  //   })
-  // }
-
   //this handles the autocomplete function - returns values in the datasource
     handleUpdateIngredient = (value) => {
       this.setState({
@@ -60,14 +53,6 @@ class Sidebar extends Component {
         <div className="sidebarInputSection">
 
 
-          {/*
-            <input
-              className="sidebarIngredientInput"
-              value={this.state.ingredientToAdd}
-              onChange={this.handleIngredientToAddChange}>
-            </input>
-
-            */}
 
           <form onSubmit={this.handleAddIngredient}>
 
@@ -79,6 +64,8 @@ class Sidebar extends Component {
             dataSource={this.state.allIngredients}
             onUpdateInput={this.handleUpdateIngredient}
             value={this.state.ingredientToAdd}
+            filter={AutoComplete.fuzzyFilter}
+            maxSearchResults={5}
           />
 
           <button type="submit">Add</button>

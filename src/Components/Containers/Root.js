@@ -43,7 +43,8 @@ class Root extends Component {
     })
     .catch((error) => {
       console.log("Failed to fetch");
-      return Promise.reject(Error("error"));
+      alert("Error: Failed to get recipes!");
+      // return Promise.reject(Error("error"));
     });
   }
 

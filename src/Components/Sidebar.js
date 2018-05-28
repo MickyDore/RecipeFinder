@@ -34,6 +34,8 @@ class Sidebar extends Component {
         ingredientToAdd: ""
       })
     }
+    this.refs[`ingredientInput`].setState({searchText:''});
+    this.refs[`ingredientInput`].focus();
   }
 
   //Remove the ingredient from the list
@@ -49,6 +51,7 @@ class Sidebar extends Component {
       <div className="sidebarContainer">
         <div className="sidebarInputSection">
 
+<<<<<<< HEAD
           <form onSubmit={this.handleAddIngredient}>
 
           <AutoComplete
@@ -63,6 +66,31 @@ class Sidebar extends Component {
           </form>
 
         <div className="sidebarTitle">Ingredients</div>
+=======
+
+
+          <form onSubmit={this.handleAddIngredient}>
+
+
+          {/*I've just popped the autocomplete function here for now*/}
+          <AutoComplete
+            hintText="Type anything"
+            ref='ingredientInput'
+            dataSource={this.state.allIngredients}
+            onUpdateInput={this.handleUpdateIngredient}
+            value={this.state.ingredientToAdd}
+            filter={AutoComplete.fuzzyFilter}
+            maxSearchResults={5}
+          />
+
+          <button type="submit">Add</button>
+          </form>
+
+
+
+
+        </div>
+>>>>>>> 1278303739e424d55019e099c654efbec7bb8f0c
 
         {this.state.ingredients.length > 0 ?
         <div className="sidebarIngredientList">

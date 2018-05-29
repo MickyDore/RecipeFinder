@@ -51,7 +51,6 @@ class Sidebar extends Component {
       <div className="sidebarContainer">
         <div className="sidebarInputSection">
 
-<<<<<<< HEAD
           <form onSubmit={this.handleAddIngredient}>
 
           <AutoComplete
@@ -66,7 +65,6 @@ class Sidebar extends Component {
           </form>
 
         <div className="sidebarTitle">Ingredients</div>
-=======
 
 
           <form onSubmit={this.handleAddIngredient}>
@@ -90,7 +88,6 @@ class Sidebar extends Component {
 
 
         </div>
->>>>>>> 1278303739e424d55019e099c654efbec7bb8f0c
 
         {this.state.ingredients.length > 0 ?
         <div className="sidebarIngredientList">

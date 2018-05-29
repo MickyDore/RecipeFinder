@@ -67,28 +67,6 @@ class Sidebar extends Component {
         <div className="sidebarTitle">Ingredients</div>
 
 
-          <form onSubmit={this.handleAddIngredient}>
-
-
-          {/*I've just popped the autocomplete function here for now*/}
-          <AutoComplete
-            hintText="Type anything"
-            ref='ingredientInput'
-            dataSource={this.state.allIngredients}
-            onUpdateInput={this.handleUpdateIngredient}
-            value={this.state.ingredientToAdd}
-            filter={AutoComplete.fuzzyFilter}
-            maxSearchResults={5}
-          />
-
-          <button type="submit">Add</button>
-          </form>
-
-
-
-
-        </div>
-
         {this.state.ingredients.length > 0 ?
         <div className="sidebarIngredientList">
           {this.state.ingredients.map((ingredient, index) => {
@@ -111,6 +89,7 @@ class Sidebar extends Component {
           <button className="addIngredientButton" onClick={() => this.props.findRecipes(this.state.ingredients)}>Find Recipes!</button>
         </div>
       </div>
+
     );
   }
 }

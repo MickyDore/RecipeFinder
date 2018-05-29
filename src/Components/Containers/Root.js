@@ -28,7 +28,7 @@ class Root extends Component {
       body:form
     };
 
-    return fetch('http://food2fork.com/api/search', requestOptions)
+    return fetch('/api/search', requestOptions)
     .then((response) => {
       if (!response.ok) {
         return Promise.reject(Error("error"));

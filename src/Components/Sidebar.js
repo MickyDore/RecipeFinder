@@ -34,6 +34,8 @@ class Sidebar extends Component {
         ingredientToAdd: ""
       })
     }
+    this.refs[`ingredientInput`].setState({searchText:''});
+    this.refs[`ingredientInput`].focus();
   }
 
   //Remove the ingredient from the list
@@ -64,6 +66,7 @@ class Sidebar extends Component {
 
         <div className="sidebarTitle">Ingredients</div>
 
+
         {this.state.ingredients.length > 0 ?
         <div className="sidebarIngredientList">
           {this.state.ingredients.map((ingredient, index) => {
@@ -86,6 +89,7 @@ class Sidebar extends Component {
           <button className="addIngredientButton" onClick={() => this.props.findRecipes(this.state.ingredients)}>Find Recipes!</button>
         </div>
       </div>
+
     );
   }
 }

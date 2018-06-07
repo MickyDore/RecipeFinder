@@ -34,8 +34,7 @@ class Sidebar extends Component {
         ingredientToAdd: ""
       })
     }
-    this.refs[`ingredientInput`].setState({searchText:''});
-    this.refs[`ingredientInput`].focus();
+
   }
 
   //Remove the ingredient from the list

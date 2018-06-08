@@ -34,7 +34,6 @@ class Sidebar extends Component {
         ingredientToAdd: ""
       })
     }
-
   }
 
   //Remove the ingredient from the list

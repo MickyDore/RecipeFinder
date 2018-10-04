@@ -10,15 +10,20 @@ class Root extends Component {
     super();
 
     this.state = {
-      recipes: []
+      recipes: [],
+      ingredients: []
     }
   }
 
   findRecipes = (ingredients) => {
+    this.setState({
+      ingredients: ingredients
+    })
 
     var form = new URLSearchParams();
     form.append("key", "bed95d03540f2640257f0c8b892bdad3");
     form.append("q", ingredients);
+
 
     const requestOptions = {
       method: "POST",
@@ -39,6 +44,7 @@ class Root extends Component {
       this.setState({
         recipes: recipes.recipes
       })
+      console.log(recipes)
       return recipes;
     })
     .catch((error) => {
@@ -48,6 +54,7 @@ class Root extends Component {
     });
   }
 
+//passing ingredients from the state here for use in the content component
 
   render() {
 
@@ -58,8 +65,11 @@ class Root extends Component {
           <Sidebar
             findRecipes={this.findRecipes}
           />
+
+
           <Content
             recipes={this.state.recipes}
+            ingredients={this.state.ingredients}
           />
         </div>
       </div>

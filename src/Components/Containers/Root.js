@@ -24,6 +24,7 @@ class Root extends Component {
     form.append("key", "bed95d03540f2640257f0c8b892bdad3");
     form.append("q", ingredients);
 
+
     const requestOptions = {
       method: "POST",
       headers: {
